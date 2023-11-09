@@ -1,0 +1,554 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../images/home.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    text-align: center;
+    padding: 100px 0;
+}
+
+header h1 {
+    font-size: 60px;
+    margin: 20px 0;
+}
+
+header p {
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+header a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+    margin: 10px 0;
+}
+/*  hamb button */
+button#menu-button {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+    position: absolute;
+    top: 10px; 
+    left: 10px; 
+    z-index: 1; 
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: none;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 10px 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+button#menu-button {
+    display: none;
+    background-color: none;
+    border: none;
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+    padding: 10px;
+}
+
+/* responsive mic */
+@media screen and (max-width: 768px) {
+    button#menu-button {
+        display: block;
+    }
+    nav ul {
+        display: none;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+    button#menu-button {
+        display: none;
+    }
+    header {
+        padding: 60px 0;
+    }
+
+    header h1 {
+        font-size: 40px;
+        margin: 10px 0;
+    }
+
+    header p {
+        font-size: 18px;
+        margin: 5px 0;
+    }
+
+    header a {
+        font-size: 16px;
+        margin: 5px 0;
+    }
+}
+
+
+/* responsive (PC) */
+@media screen and (min-width: 769px) {
+    header {
+        padding: 50px 0;
+    }
+
+    header h1 {
+        font-size: 48px;
+        margin: 20px 0 40px 0;
+    }
+
+    header p {
+        font-size: 20px;
+        margin: 5px 0;
+    }
+
+    header a {
+        display: inline;
+        font-size: 18px;
+        margin: 0 20px;
+    }
+}
+
+main{
+    padding: 20px;
+}
+
+.custom-main{
+    
+    background-image: url("../images/backgr.jpg");
+    
+}
+
+.contact-info {
+    display: flex;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #fff;
+    font-size: 14px; 
+}
+
+.contact-info a {
+    display: flex;
+    align-items: center; 
+    margin-right: 20px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+}
+
+
+.contact-info img {
+    width: 20px; 
+    height: 20px; 
+    margin-right: 5px;
+}
+
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(48%, 1fr));
+    gap: 20px; 
+}
+
+#productsbutton {
+    background-color: #ffcc00; 
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px; /* butoane rotunde :)) */
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+.product-list button:hover {
+    background-color: #ffdb4d; 
+}
+
+.product-card {
+    border: 1px solid #ccc;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px; 
+    background-color: #fff; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+.product-card img {
+    max-width: 100%;
+    border-radius: 5px; 
+}
+.product-card h2 {
+    color: #333;
+}
+.product-card button {
+    background-color: #ffcc00; 
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px; 
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+.product-card button:hover {
+    background-color: #ffdb4d; 
+}
+
+/* containerul pt bannere */
+.banners {
+    display: flex;
+    flex-wrap: wrap; /* elementele unul sub altul */
+    align-items: center; /* centralizare pe axa orizont*/
+    justify-content: center; /* spatiu intre bannere */
+}
+
+/*  banner */
+.banner {
+    flex: 1;
+    width: 100%; 
+    border: none;
+    padding: 10px;
+    text-align: center;
+    margin: 1px; 
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.banner:hover {
+    transform: scale(1.05);
+}
+
+.banner-container {
+    width: 400px;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+}
+
+.banner-image {
+    width: 100%;
+    height: auto;
+    transition: opacity 1s ease;
+}
+
+
+footer {
+    background-color: #333;
+    color: #f8f6f6;
+    text-align: center;
+    padding: 10px;
+}
+
+/* login.html */
+
+.login-form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.login-form form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.login-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"],
+.login-form input[type="email"]{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.login-form button {
+    background-color: #ffcc00;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.login-form button:hover {
+    background-color: #ffdb4d;
+}
+
+.login-form {
+    text-align: center;
+}
+
+.login-form button[type="submit"] {
+    margin-bottom: 10px;
+}
+
+.login-form .register-button {
+    display: inline-block;
+}
+
+
+/* contact.html */
+
+        .contact-form {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-form form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            height: 150px;
+        }
+
+        .contact-form button {
+            background-color: #ffcc00;
+            color: #333;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .contact-form button:hover {
+            background-color: #ffdb4d;
+        }
+
+/*  modal */
+
+
+#add-product button {
+    background-color: #ffcc00; 
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+#add-product button:hover {
+    background-color: #ffdb4d; 
+}
+
+/* Stilizare fereastr modala */
+#add-product-section {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    z-index: 2; 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Stilizare fereastra modala */
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    z-index: 1;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+body::after {
+    content: "";
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.modal:target::after {
+    display: block;
+}
+
+#add-product button {
+    background-color: #ffcc00; 
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+#add-product button:hover {
+    background-color: #ffdb4d; 
+}
+
+
+#add-product-section {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0); /* backgr semi-transparent */
+    backdrop-filter: blur(2px); /* Efect de blur */
+    z-index: 1;
+    width: 60%; /* latime mai mare */
+    max-width: 100%; 
+    padding: 100%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.457);
+}
+
+#add-product-section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#add-product-section label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+#add-product-section input[type="text"],
+#add-product-section input[type="number"],
+#add-product-section input[type="file"] {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#add-product-section button {
+    background-color: #ffcc00;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+#add-product-section button:hover {
+    background-color: #ffdb4d;
+}
+
+#add-product-section .close {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.about {
+    background-color: #f5f5f5; 
+    padding: 20px;
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    margin: 20px; 
+}
+
+.about h1 {
+    font-size: 24px; 
+    color: #333; 
+    font-weight: bold; 
+    margin-bottom: 10px; 
+}
+
+.about p {
+    font-size: 16px; /* Mărimea textului pentru paragrafe */
+    color: #2b2b2b; 
+    margin-bottom: 10px; /* Spatiere */
+}
+
+
+#viewCartButton {
+    background-color: #ffffff;
+    color: yellow;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}

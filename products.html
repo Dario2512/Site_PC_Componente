@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PC Components Store</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="contact-info">
+            <a href="mailto:dario.friskan@student.upt.ro">
+                <img src="images\email.png" alt="Email">dario.friskan@student.upt.ro
+            </a>
+            <a href="tel:+40 791235260">
+                <img src="images\phone-call.png" alt="Phone">+40 791235260
+            </a>
+            <a href="logout.php">Log Out</a>
+        </div>
+        <h1>PC Components Store</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+            <button id="menu-button">&#9776;</button>
+        </nav>
+    </header>
+    <main class="custom-main">
+        <button id="viewCartButton">Vezi Coșul</button>
+        <div id="cartModal" class="modal">
+            <span class="close" onclick="closeCartModal()">&times;</span>
+            <div id="cartContent"></div>
+          </div>
+        <div id="product-list">
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2023 PC Components Store</p>
+    </footer>
+    <script>
+        function loadProducts() {
+            fetch('products.php')
+                .then(response => response.text())  
+                .then(html => {
+                    const productContainer = document.getElementById('product-list');
+                    productContainer.innerHTML = html;
+                })
+                .catch(error => console.error('Eroare: ', error));
+        }
+
+        window.addEventListener('load', loadProducts);
+    </script>
+    <script src="script.js"></script>
+    <script src="button.js"></script>
+    <script src="modal.js"></script>
+</body>
+</html>
