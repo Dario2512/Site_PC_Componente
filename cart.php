@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// Verificare utilizator 
 if (!isset($_SESSION['user_id'])) {
     echo "Utilizatorul nu este autentificat.";
     exit();
@@ -9,7 +8,6 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id_session = $_SESSION['user_id'];
 
-// Conectare la baza de date
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -21,35 +19,31 @@ if ($conn->connect_error) {
     die("Conexiune eșuată: " . $conn->connect_error);
 }
 
-// adaugare prod in cos
 if (isset($_POST['add_to_cart'])) {
     $user_id = $_SESSION['user_id'];
     $product_id = $_POST['product_id'];
-    $quantity = 1; // aici este cantitatea, mai trebe lucrat ca sa pot sa adaug cantitatea
+    $quantity = 1; 
+    $check_sql = "SELECT * FROM cart WHERE user_id = ? AND product_id = ?";
+    $check_stmt = $conn->prepare($check_sql);
+    $check_stmt->bind_param("ii", $user_id, $product_id);
+    $check_stmt->execute();
+    $check_result = $check_stmt->get_result();
 
-    // Adauga comanda în tabelul 'cart'
-    $order_sql = "INSERT INTO cart (user_id, product_id, quantity) VALUES (?, ?, ?)";
-    $order_stmt = $conn->prepare($order_sql);
-    $order_stmt->bind_param("iii", $user_id, $product_id, $quantity);
-
-    if ($order_stmt->execute()) {
-        header("Location: products.html");
+    if ($check_result->num_rows > 0) {
+        $update_sql = "UPDATE cart SET quantity = quantity + ? WHERE user_id = ? AND product_id = ?";
+        $update_stmt = $conn->prepare($update_sql);
+        $update_stmt->bind_param("iii", $quantity, $user_id, $product_id);
+        $update_stmt->execute();
+        $update_stmt->close();
     } else {
-        echo "Eroare: " . $order_sql . "<br>" . $conn->error;
+        $order_sql = "INSERT INTO cart (user_id, product_id, quantity) VALUES (?, ?, ?)";
+        $order_stmt = $conn->prepare($order_sql);
+        $order_stmt->bind_param("iii", $user_id, $product_id, $quantity);
+        $order_stmt->execute();
+        $order_stmt->close();
     }
 
-    $order_stmt->close();
-}
-
-// Plasare comanda
-if (isset($_POST['place_order'])) {
-    $user_id = $_SESSION['user_id'];
-
-    // Goleste cosul de cumparaturi dupa plasarea comenzii
-    $clear_cart_sql = "DELETE FROM cart WHERE user_id = $user_id";
-    $conn->query($clear_cart_sql);
-
-    echo "Comanda plasată cu succes!";
+    header("Location: products.html");
 }
 
 $conn->close();

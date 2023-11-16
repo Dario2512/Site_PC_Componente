@@ -30,7 +30,7 @@ header a {
     font-size: 20px;
     margin: 10px 0;
 }
-/*  hamb button */
+/* Style for the hamb button */
 button#menu-button {
     display: block;
     background: none;
@@ -71,7 +71,6 @@ button#menu-button {
     padding: 10px;
 }
 
-/* responsive mic */
 @media screen and (max-width: 768px) {
     button#menu-button {
         display: block;
@@ -107,8 +106,6 @@ button#menu-button {
     }
 }
 
-
-/* responsive (PC) */
 @media screen and (min-width: 769px) {
     header {
         padding: 50px 0;
@@ -152,7 +149,7 @@ main{
 
 .contact-info a {
     display: flex;
-    align-items: center; 
+    align-items: center;
     margin-right: 20px;
     font-size: 15px;
     font-weight: bold;
@@ -163,7 +160,7 @@ main{
 
 .contact-info img {
     width: 20px; 
-    height: 20px; 
+    height: 20px;
     margin-right: 5px;
 }
 
@@ -178,7 +175,7 @@ main{
     color: #333;
     border: none;
     padding: 10px 20px;
-    border-radius: 5px; /* butoane rotunde :)) */
+    border-radius: 5px; 
     cursor: pointer;
     font-weight: bold;
     transition: background-color 0.3s;
@@ -191,8 +188,8 @@ main{
     border: 1px solid #ccc;
     padding: 20px;
     text-align: center;
-    border-radius: 10px; 
-    background-color: #fff; 
+    border-radius: 10px;
+    background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 .product-card img {
@@ -216,15 +213,20 @@ main{
     background-color: #ffdb4d; 
 }
 
-/* containerul pt bannere */
-.banners {
-    display: flex;
-    flex-wrap: wrap; /* elementele unul sub altul */
-    align-items: center; /* centralizare pe axa orizont*/
-    justify-content: center; /* spatiu intre bannere */
+.product-card form button {
+    display: block;
+    margin: 0 auto 10px;
 }
 
-/*  banner */
+/* Stilizeaza containerul pentru bannere */
+.banners {
+    display: flex;
+    flex-wrap: wrap; 
+    align-items: center; 
+    justify-content: center; 
+}
+
+/* Stilizeaza fiecare banner */
 .banner {
     flex: 1;
     width: 100%; 
@@ -322,9 +324,7 @@ footer {
     display: inline-block;
 }
 
-
 /* contact.html */
-
         .contact-form {
             background-color: #f5f5f5;
             padding: 20px;
@@ -391,7 +391,7 @@ footer {
     background-color: #ffdb4d; 
 }
 
-/* Stilizare fereastr modala */
+/* modal */
 #add-product-section {
     display: none;
     position: fixed;
@@ -406,9 +406,8 @@ footer {
 }
 
 
-/* Stilizare fereastra modala */
 .modal {
-    display: none;
+    display: block;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -456,9 +455,8 @@ body::after {
 }
 
 #add-product button:hover {
-    background-color: #ffdb4d; 
+    background-color: #ffdb4d;
 }
-
 
 #add-product-section {
     display: none;
@@ -466,10 +464,10 @@ body::after {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgba(255, 255, 255, 0); /* backgr semi-transparent */
-    backdrop-filter: blur(2px); /* Efect de blur */
+    background-color: rgba(255, 255, 255, 0); 
+    backdrop-filter: blur(2px); 
     z-index: 1;
-    width: 60%; /* latime mai mare */
+    width: 60%; 
     max-width: 100%; 
     padding: 100%;
     border-radius: 10px;
@@ -537,18 +535,56 @@ body::after {
 }
 
 .about p {
-    font-size: 16px; /* Mărimea textului pentru paragrafe */
+    font-size: 16px; 
     color: #2b2b2b; 
-    margin-bottom: 10px; /* Spatiere */
+    margin-bottom: 10px; 
 }
 
+/*design pt orders*/
 
-#viewCartButton {
-    background-color: #ffffff;
-    color: yellow;
-    padding: 15px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+.order-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.order-block {
+    border: 1px solid #ccc;
+    margin: 10px;
+    padding: 15px;
+    width: 300px;
+}
+
+.order-block h3 {
+    margin-bottom: 10px;
+}
+
+.order-block table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.order-block table th, .order-block table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.order-block table th {
+    background-color: #f2f2f2;
+}
+
+.order-block p {
+    margin-top: 10px;
+}
+
+.order-block a {
+    color: red;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.order-block a:hover {
+    text-decoration: underline;
 }

@@ -24,11 +24,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION["username"] = $username;
                 $_SESSION['user_id'] = $row['id'];
                 if ($row["id"] == 1) {
-                    // daca e admin role merge pe pagina admin
-                    header("Location: adminindex.php");
+                    header("Location: adminproducts.php");
                 } else {
-                    // daca nu este admin merge in users
-                    header("Location: products.html");
+                    header("Location: index.html");
                 }
                 
                 exit();

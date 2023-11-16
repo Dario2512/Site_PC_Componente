@@ -11,13 +11,21 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Conexiune eșuată: " . $conn->connect_error);
 }
-
-// Selectăm toate detaliile produselor împreună cu tag-urile asociate
-$sql = "SELECT products.id, products.name, products.price, products.picture, GROUP_CONCAT(tags.name) AS product_tags
-        FROM products
-        LEFT JOIN product_tags ON products.id = product_tags.product_id
-        LEFT JOIN tags ON product_tags.tag_id = tags.id
-        GROUP BY products.id";
+if (isset($_GET['tag'])) {
+    $tag = $_GET['tag'];
+    $sql = "SELECT products.id, products.name, products.price, products.picture, GROUP_CONCAT(tags.name) AS product_tags
+            FROM products
+            LEFT JOIN product_tags ON products.id = product_tags.product_id
+            LEFT JOIN tags ON product_tags.tag_id = tags.id
+            WHERE tags.name = '$tag'
+            GROUP BY products.id";
+} else {
+    $sql = "SELECT products.id, products.name, products.price, products.picture, GROUP_CONCAT(tags.name) AS product_tags
+            FROM products
+            LEFT JOIN product_tags ON products.id = product_tags.product_id
+            LEFT JOIN tags ON product_tags.tag_id = tags.id
+            GROUP BY products.id";
+}
 
 $result = $conn->query($sql);
 
@@ -28,7 +36,6 @@ if ($result->num_rows > 0) {
         echo '<img src="data:image/jpeg;base64,' . base64_encode($row['picture']) . '" alt="' . $row['name'] . '" width="200" height="200">';
         echo '<h2>' . $row['name'] . '</h2>';
         echo '<p style="font-size: 18px; color: #333; font-weight: bold;"> Price: ' . number_format($row['price'], 2) . ' Lei</p>';
-        echo '<p style="font-size: 14px; color: #666;">' . $row['product_tags'] . '</p>'; 
 
         if (isset($_SESSION['username'])) {
             echo '<form method="post" action="cart.php">';

@@ -11,17 +11,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];
     $email = $_POST["email"];
     $password = $_POST["password"];
-    
-    // Validare date
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $confirmPassword = $_POST["confirm_password"];
+
+
+    if ($password !== $confirmPassword) {
+        echo "Passwords do not match.";
+    }elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         echo "Email is not valid.";
     } elseif (strlen($password) < 8) {
         echo "Password must be at least 8 characters long.";
     } else {
-        // Hash password
+
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
-        // Check daca exista userul 
         $sql = "SELECT * FROM users WHERE username = ? OR email = ?";
         $stmt = mysqli_stmt_init($conn);
 
@@ -33,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (mysqli_num_rows($result) > 0) {
                 echo "Username or email already exists.";
             } else {
-                // Insert user nou
+
                 $insertSql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
                 $stmt = mysqli_stmt_init($conn);
 

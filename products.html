@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PC Components Store</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/cartstyle.css">
+    <link rel="stylesheet" href="css/search.css">
 </head>
 <body>
     <header>
@@ -22,17 +24,28 @@
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="products.html">Products</a></li>
-                <li><a href="contact.html">Contact</a></li>
                 <li><a href="about.html">About</a></li>
             </ul>
             <button id="menu-button">&#9776;</button>
         </nav>
     </header>
     <main class="custom-main">
-        <button id="viewCartButton">Vezi Coșul</button>
+        <button id="viewCartButton">
+            <img src="images/carts.png" alt="cart image" style="max-width: 50px; max-height: 40px;">
+        </button>
+        <div id="search-container">
+            <input type="text" id="search-input" placeholder="Caută produse...">
+            <button onclick="searchProducts()">Caută</button>
+        
+            <label for="tag-dropdown">.....</label>
+            <select id="tag-dropdown">
+                <option value="All">Toate</option>
+            </select>
+        </div>
         <div id="cartModal" class="modal">
             <span class="close" onclick="closeCartModal()">&times;</span>
             <div id="cartContent"></div>
+            <button onclick="purchase(); emptyCart(); closeCartModal();">Cumpară</button>
           </div>
         <div id="product-list">
         </div>
@@ -50,11 +63,23 @@
                 })
                 .catch(error => console.error('Eroare: ', error));
         }
+        function purchase() {
+        fetch('purchase.php')
+            .then(response => response.text())
+            .then(message => {
+                alert(message); 
+                location.reload();
+            })
+            .catch(error => console.error('Eroare: ', error));
+        }
 
         window.addEventListener('load', loadProducts);
     </script>
     <script src="script.js"></script>
     <script src="button.js"></script>
     <script src="modal.js"></script>
+    <script src="search.js"></script>
+    <script src="filter.js"></script>
+
 </body>
 </html>

@@ -9,7 +9,6 @@ menuButton.addEventListener('click', () => {
     }
 });
 
-// vede latime ecran si da hide la butoane din nav
 function toggleMenuOnScreenSize() {
     if (window.innerWidth <= 769) {
         menuButton.style.display = 'block';
@@ -20,7 +19,6 @@ function toggleMenuOnScreenSize() {
     }
 }
 
-// check initial
 toggleMenuOnScreenSize();
 
 window.addEventListener('resize', toggleMenuOnScreenSize);

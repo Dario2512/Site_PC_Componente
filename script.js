@@ -1,30 +1,53 @@
-document.addEventListener('DOMContentLoaded', function () {
-    // Obtine containerul produselor
+function displayProducts(products) {
     const productContainer = document.getElementById('product-list');
+    productContainer.innerHTML = ''; 
 
-    // Obtine toate  produsele
-    const productCards = productContainer.querySelectorAll('.product-card');
+    products.forEach(product => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
 
-    // Itereaza prin fiecare produs și personalizează aspectul
-    productCards.forEach(function(card) {
-        // Stil card
-        card.style.border = '1px solid #ddd';
-        card.style.margin = '10px';
-        card.style.padding = '10px';
-        card.style.borderRadius = '10px'; // Adaugă colțuri rotunjite
+        const title = document.createElement('h2');
+        title.textContent = product.name;
 
-        // Creează un buton "Cumpără" si adauga la card
+        const image = document.createElement('img');
+        image.src = product.picture;
+
+        const tags = document.createElement('p');
+        tags.textContent = 'Tags: ' + product.tags.join(', '); 
+
         const buyButton = document.createElement('button');
         buyButton.textContent = 'Cumpără';
-        buyButton.className = 'buy-button'; // adauga o clasa css
+        buyButton.className = 'buy-button';
 
-        // Adauga un eveniment la butonul "Cumpără"
-        buyButton.addEventListener('click', function() {
-            //logica pt cumparare, mai adaugi chesti daca vrei sa mai face cv
-            alert('Produs cumpărat: ' + card.querySelector('h2').textContent);
+        buyButton.addEventListener('click', function () {
+            alert('Produs cumpărat: ' + product.name);
         });
 
-        // Adaugă butonul la card
+        card.appendChild(title);
+        card.appendChild(image);
+        card.appendChild(tags);
         card.appendChild(buyButton);
+
+        productContainer.appendChild(card);
+    });
+}
+
+displayProducts(products);
+
+document.addEventListener('DOMContentLoaded', function () {
+    const tagDropdown = document.getElementById('tag-dropdown');
+    const allTags = Array.from(new Set(products.flatMap(product => product.tags)));
+
+    allTags.forEach(tag => {
+        const option = document.createElement('option');
+        option.value = tag;
+        option.textContent = tag;
+        tagDropdown.appendChild(option);
+    });
+
+    tagDropdown.addEventListener('change', function () {
+        const selectedTag = tagDropdown.value;
+        const filteredProducts = products.filter(product => product.tags.includes(selectedTag) || selectedTag === 'All');
+        displayProducts(filteredProducts);
     });
 });
