@@ -12,7 +12,6 @@ if ($conn->connect_error) {
     die("Conexiune eșuată: " . $conn->connect_error);
 }
 
-// Selectăm toate detaliile produselor împreună cu tag-urile asociate
 $sql = "SELECT products.id, products.name, products.price, products.picture, GROUP_CONCAT(tags.name) AS product_tags
         FROM products
         LEFT JOIN product_tags ON products.id = product_tags.product_id

@@ -11,6 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($conn->connect_error) {
             die("Conexiune eșuată: " . $conn->connect_error);
         }
+
         $tag_nou = $_POST['tag_nou'];
 
         $stmt = $conn->prepare("INSERT INTO tags (name) VALUES (?)");
@@ -21,6 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             echo "Eroare la adăugarea tag-ului: " . $conn->error;
         }
+
         $stmt->close();
         $conn->close();
     } else {
